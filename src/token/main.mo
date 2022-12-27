@@ -13,10 +13,14 @@ actor Token {
     public query func balanceOf(who: Principal) : async Nat {
         let balance: Nat = switch(balances.get(who)) {
             case (null) {0};
-            case (?balance) {balance};
+            case (?result) {result};
         };
 
         return balance;
+    };
+
+    public query func getSymbol() : async Text {
+        return symbol;
     };
 };
 
